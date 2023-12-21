@@ -1,0 +1,9 @@
+<div class="card mb-3" style="width: 18rem;" *ngFor="let cat of cats">
+    <img [src]="cat.imgUrl" class="card-img-top" [alt]="cat.nom">
+    <div class="card-body">
+        <h5 class="card-title">{{cat.nom}}</h5>
+        <p class="card-text">{{cat.race}}</p>
+        <p class="card-text">Date of birth: {{cat.birthday | date: 'longDate'}}</p>
+        <a href="#" class="btn btn-primary">Adopt</a>
+    </div>
+</div>
