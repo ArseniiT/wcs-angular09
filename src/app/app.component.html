@@ -9,20 +9,16 @@
           ></app-create-kitten>
         </div>
       </div>
-      <div class="row mt-5">
-        <div class="col">
-          <div class="row">
-            <app-list-kitten
-              *ngFor="let cat of cats; let i = index"
-              [cat]="cat"
-              [catId]="i"
-              (adoptCat)="addCatToUserCatList($event)"
-            >
-            </app-list-kitten>
-            <div class="col" *ngIf="cats.length === 0">
-              Bravo you adopted all the cats!
-            </div>
-          </div>
+      <div class="flex-row justify-content-around mt-5">
+        <app-list-kitten
+          *ngFor="let cat of cats; let i = index"
+          [cat]="cat"
+          [catId]="i"
+          (adoptCat)="addCatToUserCatList($event)"
+        >
+        </app-list-kitten>
+        <div class="col" *ngIf="cats.length === 0">
+          Bravo you adopted all the cats!
         </div>
       </div>
     </div>
