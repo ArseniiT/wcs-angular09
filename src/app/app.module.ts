@@ -7,6 +7,7 @@ import { CreateKittenComponent } from './create-kitten/create-kitten.component';
 import { ListKittenComponent } from './list-kitten/list-kitten.component';
 import { UserKittenComponent } from './user-kitten/user-kitten.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,9 +17,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UserKittenComponent
   ],
   imports: [
-  BrowserModule,
+    BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

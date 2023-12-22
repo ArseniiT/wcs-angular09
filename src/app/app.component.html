@@ -1,19 +1,40 @@
-<div class="container text-center borderc">
+<div class="container text-center borderc bg-adopt">
   <div class="row">
-    <div class="col-8 borderc">
-      <div class="row borderc">
+    <div class="col-8">
+      <div class="row shadow m-1 bg-add rounded">
         <div class="col">
-          <app-create-kitten></app-create-kitten>
+          <h4 class="m-1">Add new cat to the adoption list</h4>
+          <app-create-kitten
+            (addNewCat)="addCat($event)"
+          ></app-create-kitten>
         </div>
       </div>
-      <div class="row borderc">
+      <div class="row mt-5">
         <div class="col">
-          <app-list-kitten></app-list-kitten>
+          <div class="row">
+            <app-list-kitten
+              *ngFor="let cat of cats; let i = index"
+              [cat]="cat"
+              [catId]="i"
+              (adoptCat)="addCatToUserCatList($event)"
+            >
+            </app-list-kitten>
+            <div class="col" *ngIf="cats.length === 0">
+              Bravo you adopted all the cats!
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-4 borderc">
-      <app-user-kitten></app-user-kitten>
+    <div class="col-4 bg-user">
+      <h3>My cats</h3>
+      <app-user-kitten
+        *ngFor="let cat of userCats; let i = index"
+        [cat]="cat"
+        [catId]="i"
+        (emitCatId)="removeUserCatById($event)"
+      >
+      </app-user-kitten>
     </div>
   </div>
 </div>

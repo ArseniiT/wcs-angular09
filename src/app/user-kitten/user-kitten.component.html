@@ -1,1 +1,26 @@
-<p>user-kitten works!</p>
+<div
+    class="card mb-3 col bg-user"
+    style="width: 18rem;"
+    (mouseenter)="showInfo=true"
+    (mouseleave)="showInfo=false"
+>
+    <div class="text-center">
+        <div class="my-hover-effect-btn1">
+            <img [src]="cat.imgUrl" class="rounded img-thumbnail" />
+            <ng-container *ngIf="showInfo">
+                <div class="my-title">{{cat.nom}}
+                    <div>
+                        {{cat.race}}
+                    </div>
+                    <div>
+                        {{cat.birthday | date: 'shortDate'}}
+                    </div>
+                </div>
+                <div class="my-overlay"></div>
+                <div class="my-button">
+                    <a href="#" class="btn btn-warning" (click)="remove()">Return the cat</a>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

@@ -1,21 +1,54 @@
-<form class="form-horizontal mt-2 mb-5">
-    <div class="row">
+<form [formGroup]="newCatForm" (ngSubmit)="onSubmit()" class="form-horizontal mt-2 mb-3 needs-validation">
+    <div class="row mb-3">
         <div class="col-3">
             <label for="nom" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="nom" aria-describedby="emailHelp">
+            <input type="text" class="form-control invalid" id="nom" formControlName="nom">
+            <div
+                class="invalid-feedback show"
+                *ngIf="submitted && newCatForm.invalid && newCatForm.get('nom')?.hasError('required')"
+            >
+                Le champ 'Nom' doit être renseigné.
+            </div>
         </div>
         <div class="col-3">
             <label for="race" class="form-label">Race</label>
-        <input type="text" class="form-control" id="race">
+            <input type="text" class="form-control" id="race" formControlName="race">
+            <div
+            class="invalid-feedback show"
+                *ngIf="submitted && newCatForm.invalid && newCatForm.get('race')?.hasError('required')"
+            >
+                Le champ 'Race' doit être renseigné.
+            </div>
         </div>
         <div class="col-3">
             <label for="date" class="form-label">Date de naissance</label>
-            <input type="date" class="form-control" id="date">
+            <input type="date" class="form-control" id="date" formControlName="birthday">
+            <div
+                class="invalid-feedback show"
+                *ngIf="
+                    submitted &&
+                    newCatForm.invalid &&
+                    newCatForm.get('birthday')?.hasError('ageLimit')"
+            >
+                La date doit être choisi entre le
+                    {{minDate | date: 'longDate'}} et
+                    {{currentDate | date: 'longDate'}}
+            </div>
         </div>
-        <div class="col-3 mb-3">
+        <div class="col-3">
             <label for="photo" class="form-label">Url de photo</label>
-            <input type="text" class="form-control" id="photo">
+            <input type="text" class="form-control" id="photo" formControlName="imgUrl">
         </div>
-        <button type="submit" class="btn btn-primary">Add</button>
+        <div class="row">
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button
+                    type="submit"
+                    [ngClass]="{ 'btn-danger' : submitted && newCatForm.invalid }"
+                    class="btn mt-2 mr-2 ml-2 btn-primary"
+                    >
+                    Add
+                </button>
+            </div>
+        </div>
     </div>
 </form>
