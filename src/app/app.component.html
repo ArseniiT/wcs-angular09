@@ -9,8 +9,9 @@
           ></app-create-kitten>
         </div>
       </div>
-      <div class="flex-row justify-content-around mt-5">
+      <div class="row justify-content-around mt-5">
         <app-list-kitten
+          class="m-3 col-xl-3-auto col-md-auto col-auto col-sm-auto"
           *ngFor="let cat of cats; let i = index"
           [cat]="cat"
           [catId]="i"
